@@ -1,0 +1,90 @@
+<!-- 
+To modify HTML element content or the HTML element itself, we can use innerText or innerHTML.
+-> innerText is used to modify the text inside an HTML element.
+-> innerHTML is used to modify the HTML element itself.
+-> textContent “converts” everything inside the element to plain text — no matter what tags are inside.
+-> The difference between innerHTML and textContent is that innerHTML parses the HTML element and just converts the 
+particular tag we want to change, whereas textContent does not parse anything; it treats all HTML elements as simple text.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <!-- ******************************************* Example of innerText ***************************************** -->
+    <h2 id="head1">Old Head</h2>
+
+    <!-- ****************************************** Example of innerHTML ****************************************** -->
+    <div class="container">
+        <p>I am an old paragraph</p>
+    </div>
+
+    <div class="container1">
+        <p>Old paragraph</p>
+        <button onclick="changePara()" id="onclick">Submit</button>
+    </div>
+
+    <!-- ******************************************* Example of textContent ************************************** -->
+    <div class="container2">
+        <p>I am a new paragraph</p>
+    </div>
+</body>
+
+<script>
+// **************************************************** Example of innerText ******************************************
+const changeText = document.getElementById("head1");
+changeText.innerText = "New Text";
+
+// **************************************************** Example of innerHTML *******************************************
+// const changeElement = document.getElementsByName("container");
+// changeElement[0].innerHTML = "<p>I am <strong>new</strong> paragraph</p>";
+
+//                                  OR
+const changeElement = document.getElementsByClassName("container");
+changeElement[0].innerHTML = `
+  <p>I am <strong>new</strong> paragraph</p>
+  <h1>I am Dipa</h1>
+`;
+
+// In this code, I’ve used the onclick attribute in the button element to trigger a JavaScript function when the button is
+// clicked.
+// When the user clicks the button, the function changePara() automatically gets executed. Inside the function,
+// I have used document.getElementsByClassName("container1")[0] to access the target container, and then updated its 
+// content using innerHTML.
+
+function changePara() {
+    document.getElementsByClassName('container1')[0].innerHTML = `<p>New paragraph</p>`;
+}
+
+//                                  OR
+// Most used and good method
+// Here, I have used the addEventListener method to call the event name 'click', which is already predefined by the DOM. 
+// That means once the 'click' event gets triggered, the DOM automatically calls the 'click' event and executes the callback 
+// or handler function 'changePara'.
+
+document.addEventListener('click', changePara);
+function changePara() {
+    document.getElementsByClassName('container1')[0].innerHTML = `<p>New paragraph</p>`;
+}
+
+// Here, first I accessed the button element using its ID "onclick".
+// Once I have access to the button, I can change the paragraph inside the "container1" class using innerHTML
+// by using the addEventListener which listens to the event name 'click'.
+const buttonClick = document.getElementById("onclick");
+buttonClick.addEventListener('click', () => {
+    document.getElementsByClassName("container1")[0].innerHTML = `<p>New paragraph</p>`;
+});
+
+// **************************************************** Example of textContent ****************************************
+// Here, textContent treats everything as plain text and shows the paragraph as <p> I am new paragraph </p>, including 
+// opening and closing tags.
+document.getElementsByClassName("container2")[0].textContent = `<p>I am new paragraph</p>`;
+
+// If you want to display paragraph text as plain text, then you need to follow the below syntax:
+document.getElementsByClassName("container2")[0].textContent = `I am new paragraph`;
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!-- 
+DOM (Document Object Model)
+→ A tree-like structure that represents the entire HTML document (i.e., the whole web page).
+→ Each HTML element is represented as a node in the DOM.
+→ JavaScript uses the DOM to interact with HTML elements (e.g., to access, modify, or respond to events).
+-->
+
+<!-- There are five common ways to access HTML elements using the DOM:
+ 1) getElementById – Accesses an HTML element by its id and returns the entire HTML element.
+ 2) getElementsByTagName – Accesses HTML elements by their tag name (e.g., <h2> or <p>) and returns a live HTMLCollection
+   of all matching elements in an array.
+ 3) getElementsByClassName – Accesses HTML elements by their class name and returns a live HTMLCollection of all matching
+  elements in array.
+ 4) querySelector – Accesses the first HTML element that matches a CSS selector (e.g., .class_name or #id_name) and 
+ returns it.
+ 5) querySelectorAll – Accesses all HTML elements that match a CSS selector and returns a static NodeList 
+ (an array-like collection).
+ Both querySelector and querySelectorAll are same like accessing html element using class(.(dot) notation) or id(#).
+-->
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM</title>
+</head>
+<body>
+  <h1 id="head1">Get Element By Id</h1>
+  <h2>Get Element By Tag Name</h2>
+  <h2>Get Element By Tag Names</h2>
+  <p class="para">I am a programmer</p>
+  <p class="para">I am a skilled programmer</p>
+  <h4 id="head4">Get Element By Query Selector</h4>
+  <h5 id="head5">Get Element By Query Selector All</h5>
+  <h6 id="head5">Get Element By Query Selectors All</h6>
+</body>
+
+<script>
+  // Here, the 'heading' variable stores the entire head1 element and return
+  // <h1 id="head1">Get Element By Id</h1>
+  // 'document' is an object that represents the entire HTML elements as a tree structure (DOM) and provides built-in 
+  //  methods like getElementById, etc.
+  const heading = document.getElementById("head1");
+  console.log(heading);
+
+  const heading1 = document.getElementsByTagName("h2");
+  console.log(heading1); // Returns all <h2> elements as a collection
+  console.log(heading1[0]); // First <h2> element
+  console.log(heading1[1]); // Second <h2> element
+
+  const heading2 = document.getElementsByClassName("para");
+  console.log(heading2); // Returns all elements with class "para"
+  console.log(heading2[0]); // First <p class="para">
+  console.log(heading2[1]); // Second <p class="para">
+
+  const heading3 = document.querySelector("#head4"); // Returns the first element with id="head4"
+  console.log(heading3);
+
+  const heading4 = document.querySelectorAll("#head5"); // Returns all elements with id="head5"
+  console.log(heading4);
+  console.log(heading4[0]); // First element with id="head5"
+  console.log(heading4[1]); // Second element with id="head5"
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!--
+Event handling means listening to events such as (click, hover, input, submit) and responding to them using JavaScript.
+→ An event is an action that indicates something has happened in the program, such as the user clicking a mouse button or 
+a file being uploaded — these are examples of events.
+→ Whenever an event is triggered (called), the event listener listens for that event, takes the corresponding callback or
+ handler function, and pushes it to the event queue.
+→ The event loop monitors the event queue and passes the event handler (callback function) to the call stack, which then
+ executes the logic inside the event handler.
+
+******************************* How an event handler listens to events in JavaScript ************************************
+To listen to an event and respond to a user's action, the event handler uses addEventListener(eventName, callback). 
+This listens for the specified eventName and executes the logic inside the callback when that event is triggered.
+
+****** NOTE: *******
+You can only use valid `eventName`s that are predefined by the DOM. Some examples are:
+'click', 'submit', 'keydown', 'mouseover', 'scroll', 'input', 'load', etc.
+-->
+
+<!-- 1: Add Event Listener Example -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add an Event</title>
+</head>
+<body>
+  <button id="btn">Submit</button>
+</body>
+
+<script>
+
+  // First, we are accessing the HTML element 'button' using the getElementById method.
+  // Then we add an event listener using addEventListener with the predefined event name 'click'.
+  // Once the user clicks the button on the user interface, a pop-up message 'clicked me!' will be displayed.
+  const button = document.getElementById("btn");
+
+  // Using an named function
+  button.addEventListener('click', function clickMe() {
+    alert("clicked me!");
+  });
+
+  // Using an arrow function
+  button.addEventListener("click", () => {
+    alert("Clicked using arrow function");
+  });
+
+  // Using a named function
+  function handleClick() {
+    console.log("Named function called");
+    alert("clicked me!");
+  }
+  button.addEventListener("click", handleClick);
+</script>
+</html>

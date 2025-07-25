@@ -1,0 +1,51 @@
+<!-- 
+**CSS (Cascading Style Sheets)** is used to style and design the structure of a webpage.
+Think of CSS like clothes or skin that you put on the HTML skeleton.
+
+There are **three types of CSS**:
+(1) Inline CSS — Styling is directly inside the HTML element using the `style` attribute
+(2) Internal CSS — Styling is written inside the <style> tag within the <head>
+(3) External CSS — Styling is written in a separate `.css` file and linked using the <link> tag
+
+Let’s explore each one with examples.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Types Example</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Internal CSS -->
+    <style>
+        h2 {
+            color: blue;
+            text-align: center;
+        }
+
+        p {
+            font-size: 20px;
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Inline CSS: Styling directly inside element using `style` attribute -->
+    <h1 style="color: Black; text-align: center;">Welcome to My Website</h1>
+    <p style="font-size: 18px; color: green;">This is a paragraph styled using inline CSS.</p>
+
+    <!-- Internal CSS: Styling from <style> tag inside <head> -->
+    <h2>Sub Heading</h2>
+    <p>This is a paragraph styled using internal CSS.</p>
+
+    <!-- External CSS: Styling from separate CSS file -->
+    <h3>Sub Sub Heading</h3>
+    <p>This is a paragraph styled using external CSS.</p>
+
+</body>
+</html>

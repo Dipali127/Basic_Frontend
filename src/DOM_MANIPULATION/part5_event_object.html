@@ -1,0 +1,56 @@
+<!-- What is an event object?
+When you attach an event listener using the addEventListener method, the browser automatically passes an event object to the 
+callback function. 
+This object contains detailed information about the event, such as what type of event it was, which element it is
+targeting, and more.
+
+****************************************** Some General Properties of Event Objects are ********************************
+(i) type: - The type of the event (e.g., "click", "keydown", "mouseover").
+(ii) target: - The element on which the event originally occurred.
+(iii) currentTarget: - The element on which the event listener is currently attached.
+(iv) timeStamp: - The time (in ms) when the event was created.
+(v) eventPhase: - The phase of the event flow (capturing, at target, or bubbling).
+(vi) bubbles: - Returns true if the event bubbles up through the DOM.
+(vii) cancelable: - Returns true if the event is cancelable.
+(viii) defaultPrevented: - Returns true if preventDefault() was called on the event.
+(ix) capture: - Returns true if the listener was registered for the capture phase.
+
+******************************** Most Useful Methods/Properties of Event Objects are: ********************************
+(i) preventDefault(): - Prevents the default browser behavior (e.g., prevents form submission).
+(ii) stopPropagation(): - Stops the event from bubbling up to parent elements.
+(iii) stopImmediatePropagation(): - Stops other listeners of the same event from being called.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Object Demo</title>
+</head>
+<body>
+
+  <div class="parent" style="padding: 20px; background-color: #f0f0f0;">
+    <button>Click Me</button>
+  </div>
+
+  <script>
+    // First, I accessed the class "parent" using the document.getElementsByClassName method.
+    // Then, I attached an event listener with the event name 'click', which triggers the callback function.
+    // The browser automatically passes the event object to this callback function.
+    // Now we can access event-related methods and properties using this event object, like event.target.
+
+    // event.target returns the element on which the event occurred (in this case, the button).
+    // event.currentTarget returns the element on which the event listener is attached.
+    // Here, the click event listener is attached to the div element (class "parent"),
+    // so event.currentTarget will refer to the div.
+
+    document.getElementsByClassName("parent")[0].addEventListener('click', (event) => {
+        console.log(`event type: ${event.type}`);
+        console.log(`event target: ${event.target}`);
+        console.log(`event current target: ${event.currentTarget}`);
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,77 @@
+<!-- 
+We can style HTML elements in two ways:  
+1) Method 1 — Inline styling (less preferred for larger projects)  
+2) Method 2 — Using CSS classes and classList methods (recommended)  
+
+→ The classList method has three ways to perform styling on HTML elements:  
+(i) classList.toggle — Adds the class if the HTML element doesn't have it, or removes the class if it does  
+(ii) classList.add — Adds the class (styling) to the HTML element  
+(iii) classList.remove — Removes the class (styling) from the HTML element  
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changing Style of HTML Elements using ID and Class Name</title>
+  <style>
+    .container {
+      background-color: yellow;
+      font-size: 30px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="head1">CHANGING STYLE OF HTML ELEMENTS</h1>
+  <div class="container">
+    <p class="box">I am a paragraph</p>
+    <button id="btn">Submit</button>
+  </div>
+</body>
+<script>
+  // ******************************************** Inline Styling ***********************************************
+  // Here, I first accessed the h1 element.
+  // After accessing the h1 element, I used addEventListener with the 'mouseover' event, 
+  // which triggers (or calls) the function when the mouse hovers over the element.
+  // Inside that function, I again accessed the h1 element to change the style properties.
+  // The event gets triggered just by moving the mouse over the text — no clicking is required.
+  // So, whenever the mouse moves over the text area in the browser, the style of the text changes.
+  // 'mouseover' is a predefined DOM event that automatically invokes the attached callback function when triggered.
+  // You can either add a single style or apply multiple styles at once.
+
+  const heading1 = document.getElementById("head1");
+  document.getElementById("head1").addEventListener('mouseover', () => {
+    heading1.style.fontSize = "20px";
+    heading1.style.color = "green";
+    heading1.style.backgroundColor = "orange";
+    heading1.style.display = "flex";
+    heading1.style.justifyContent = "center";
+    heading1.style.textAlign = "center";
+  });
+
+  // ******************************************** classList Styling ***********************************************
+  // Here, I used CSS classes and the classList.toggle method, which will remove styling if it exists and add it if it doesn't.
+  // When the user clicks the button through the user interface, it will remove styling from the paragraph element since initially, 
+  // styling exists.
+  // But if styling doesn't exist initially, then it will add the styling.
+
+  const button = document.getElementById("btn");
+  button.addEventListener('click', () => {
+    document.getElementsByClassName("container")[0].classList.toggle("container");
+  });
+
+  // We can do the same thing (adding or removing styling using CSS classList) using add or remove methods.
+
+  // ***************************************** Add Styling on HTML Element ******************************************
+  button.addEventListener('click', () => {
+    document.getElementsByClassName("container")[0].classList.add("container");
+  });
+
+  // ***************************************** Remove Styling on HTML Element ***************************************
+  button.addEventListener('click', () => {
+    document.getElementsByClassName("container")[0].classList.remove("container");
+  });
+</script>
+</html>
